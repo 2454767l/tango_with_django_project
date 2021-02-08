@@ -6,10 +6,19 @@
 	</head>
 
 	<body>
-	<h1>Add a Category</h1>
+	<h1>Add a Page to {{category.name}}</h1>
 	<div>
-		<form id="category_form" method="post" action="/rango/add_category/">
+		<form id="add_page_form" method="post" action="/rango/category/{{ category.slug }}/add_page/">
+
 			{% csrf_token %}
+
+			{% if category %}
+				<a href="/rango/category/{{category.slug }}/add_page/">Add Page</a> <br/>
+			{% else %}
+				The specified category does not exist
+				#The category doesn't exist
+			{% endif %}
+
 			{% for hidden in form.hidden_fields %}
 				{{ hidden }}
 			{% endfor %}
@@ -18,7 +27,7 @@
 				{{ field.help_text }}
 				{{ field }}
 			{% endfor %}
-			<input type="submit" name="submit" value="Create Category" />
+			<input type="submit" name="submit" value="Add Page" />
 		</form>
 		</div>
 	</body>

@@ -18,4 +18,3 @@ urlpatterns = [
 
 ]
 
-LOGIN_URL = 'rango:login'
